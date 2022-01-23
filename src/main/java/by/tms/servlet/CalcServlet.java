@@ -6,15 +6,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import calculator.*;
-import calculator.validator.Validator;
+import by.tms.service.*;
+import by.tms.validator.Validator;
+import by.tms.entity.Result;
 
 @WebServlet(urlPatterns = "/calc")
-public class FirstServlet extends HttpServlet {
+public class CalcServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, NullPointerException {
         Validator validator = new Validator();
-        Calculator calculator = new Calculator();
+        CalculatorService calculator = new CalculatorService();
         try {
             String firstNumberString = req.getParameter("num1");
             String secondNumberString = req.getParameter("num2");

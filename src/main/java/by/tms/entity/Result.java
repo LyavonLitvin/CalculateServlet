@@ -1,4 +1,4 @@
-package calculator;
+package by.tms.entity;
 
 public class Result {
     private double firstNumber;
@@ -56,6 +56,6 @@ public class Result {
 
     @Override
     public String toString() {
-        return "Result = "+ resultNumber;
+        return " " + firstNumber + " " + operatorType + " " + secondNumber + " = " + resultNumber +"\n";
     }
 }

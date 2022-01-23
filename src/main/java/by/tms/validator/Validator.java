@@ -1,4 +1,4 @@
-package calculator.validator;
+package by.tms.validator;
 
 public class Validator {
     public boolean isNumeric(String inputData) {
