@@ -1,14 +1,35 @@
 package by.tms.entity;
 
 public class User {
-    String name;
-    String username;
-    String Password;
+
+    private String name;
+    private String userName;
+    private String password;
+    private String sessionID;
 
     public User(String name, String username, String password) {
         this.name = name;
-        this.username = username;
-        Password = password;
+        this.userName = username;
+        this.password = password;
+    }
+
+    public User(String name, String userName, String password, String sessionId) {
+        this.name = name;
+        this.userName = userName;
+        this.password = password;
+        this.sessionID = sessionId;
+    }
+
+    public User(String sessionId) {
+        this.sessionID = sessionId;
+    }
+
+    public String getSessionID() {
+        return sessionID;
+    }
+
+    public void setSessionID(String sessionID) {
+        this.sessionID = sessionID;
     }
 
     public String getName() {
@@ -19,19 +40,30 @@ public class User {
         this.name = name;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {
-        return Password;
+        return password;
     }
 
     public void setPassword(String password) {
-        Password = password;
+        this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", sessionID='" + sessionID + '\'' +
+                '}';
     }
 }
+

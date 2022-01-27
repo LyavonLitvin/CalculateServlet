@@ -1,0 +1,48 @@
+package by.tms.service;
+
+import by.tms.entity.User;
+import by.tms.storage.InMemoryUsersStorage;
+
+import java.util.ArrayList;
+
+public class InMemoryUsersStorageService {
+    InMemoryUsersStorage inMemoryUsersStorage = InMemoryUsersStorage.getInstance();
+
+    public boolean saveUser(User user) {
+        if (!inMemoryUsersStorage.checkByUserName(user.getUserName())) {
+            inMemoryUsersStorage.saveUser(user);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean checkUser(String username) {
+        return inMemoryUsersStorage.checkByUserName(username);
+    }
+
+    public boolean checkUserByUsernamePassword(String username, String password) {
+        User user = inMemoryUsersStorage.getByUserName(username);
+        if (user.getPassword().equals(password)) {
+            return true;
+        }
+        return false;
+    }
+
+//    public boolean checkUserSessionId(String userName, String sessionId) {
+//        User user = inMemoryUsersStorage.getByUserName(userName);
+//        if (user.getSessionID().equals(sessionId)) {
+//            return true;
+//        } else {
+//            return false;
+//        }
+//    }
+
+    public ArrayList<User> getUsers() {
+        return inMemoryUsersStorage.getUsers();
+    }
+
+    public void deleteUsers() {
+        inMemoryUsersStorage.deleteUsers();
+    }
+}

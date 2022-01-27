@@ -5,21 +5,24 @@ public class Result {
     private double secondNumber;
     private String operatorType;
     private double resultNumber;
+    private String userName;
 
     public Result() {
     }
 
-    public Result(double firstNumber, double secondNumber, String operatorType) {
+    public Result(double firstNumber, double secondNumber, String operatorType, String userName) {
         this.firstNumber = firstNumber;
         this.secondNumber = secondNumber;
         this.operatorType = operatorType;
+        this.userName = userName;
     }
 
-    public Result(double firstNumber, double secondNumber, String operatorType, double resultNumber) {
+    public Result(double firstNumber, double secondNumber, String operatorType, double resultNumber, String userName) {
         this.firstNumber = firstNumber;
         this.secondNumber = secondNumber;
         this.operatorType = operatorType;
         this.resultNumber = resultNumber;
+        this.userName = userName;
     }
 
     public double getFirstNumber() {
@@ -54,8 +57,16 @@ public class Result {
         this.resultNumber = resultNumber;
     }
 
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
     @Override
     public String toString() {
-        return " " + firstNumber + " " + operatorType + " " + secondNumber + " = " + resultNumber +"\n";
+        return " " + firstNumber + " " + operatorType + " " + secondNumber + " = " + resultNumber + " ";
     }
 }

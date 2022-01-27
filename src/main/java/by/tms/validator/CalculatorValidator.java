@@ -1,6 +1,6 @@
 package by.tms.validator;
 
-public class Validator {
+public class CalculatorValidator {
     public boolean isNumeric(String inputData) {
         try {
             Double.parseDouble(inputData);
@@ -17,4 +17,6 @@ public class Validator {
             return false;
         }
     }
+
+
 }
