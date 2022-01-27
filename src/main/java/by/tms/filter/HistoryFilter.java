@@ -18,7 +18,7 @@ public class HistoryFilter extends HttpFilter {
 
     @Override
     protected void doFilter(HttpServletRequest req, HttpServletResponse resp, FilterChain chain) throws IOException, ServletException {
-        if (req.getMethod().equals("POST")) {
+//        if (req.getMethod().equals("POST")) {
             System.out.println("testDoFilter");
             HttpSession session = req.getSession();
             if (session.getAttribute("username") == null) {
@@ -27,11 +27,6 @@ public class HistoryFilter extends HttpFilter {
                 req.getServletContext().getRequestDispatcher("/pages/authorization.jsp").forward(req, resp);
 
             }
-        }
-//        } else {
-//            session.setAttribute("messageErrorHistory", "You have to authorize first!");
-//            System.out.println("You have to authorize first!");
-//
 //        }
         chain.doFilter(req, resp);
     }

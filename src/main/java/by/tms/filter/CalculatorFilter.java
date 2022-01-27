@@ -39,7 +39,7 @@ public class CalculatorFilter extends HttpFilter {
                     System.out.println("One of the fields is null!");
                     req.getServletContext().getRequestDispatcher("/pages/calc.jsp").forward(req, resp);
                 } else if (firstNumberString.isEmpty() || secondNumberString.isEmpty() || operationType.isEmpty()) {
-                    req.setAttribute("messageErrorCalculator", "One of the fields is empty!");
+                    req.setAttribute("messageErrorCalculator", "field numbers or opType is empty!");
                     System.out.println("One of the fields is empty!");
                     req.getServletContext().getRequestDispatcher("/pages/calc.jsp").forward(req, resp);
                 } else if (!validator.isNumeric(firstNumberString) && !validator.isNumeric(secondNumberString) && !validator.isRightOperator(operationType)) {

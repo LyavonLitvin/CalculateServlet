@@ -16,12 +16,6 @@ import java.util.ArrayList;
 public class HistoryServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/pages/history.jsp").forward(req, resp);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("testDoPost");
         HttpSession session = req.getSession();
         CalculatorService calculatorService = new CalculatorService();
         System.out.println("testDoGet");
@@ -30,5 +24,11 @@ public class HistoryServlet extends HttpServlet {
         }
         ArrayList<String> results = calculatorService.getResults((String) session.getAttribute("username"));
         req.setAttribute("results", results);
+        req.getServletContext().getRequestDispatcher("/pages/history.jsp").forward(req, resp);
     }
+
+//    @Override
+//    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//
+//    }
 }

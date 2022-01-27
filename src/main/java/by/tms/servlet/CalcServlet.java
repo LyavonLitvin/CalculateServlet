@@ -33,7 +33,7 @@ public class CalcServlet extends HttpServlet {
         calculatorService.calculation(result);
         System.out.println("Calculation was successful");
         req.setAttribute("results",calculatorService.getResults((String) session.getAttribute("username")));
-        req.setAttribute("messageCalculation", result.toString());
+        req.setAttribute("messageCalculator", result.toString());
         for ( Result result1: calculatorService.getResultsToSOUT((String) session.getAttribute("username"))) {
             System.out.println(result1.toString());
         }

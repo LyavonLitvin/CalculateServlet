@@ -23,18 +23,17 @@
     <br>
     <button>Calculate</button>
     <br>
+    <h3><p>Calculation: ${requestScope.messageCalculator}</p></h3>
     <br>
     <br>
+    <a href="/history"><h3>Show operations history</h3></a>
     <br>
-    <button formaction="/pages/history.jsp">Show operations history</button>
     <br>
-    <br>
-    <button formaction="/pages/index.jsp">On the main page</button>
+    <a href="/"><h3>On the main page</h3></a>
     <br>
     <br>
     <a href="/logout"><h3>Logout</h3></a>
     <br>
-    <p>Calculation:</p>${requestScope.messageCalculator}
     <br>
     <p>${requestScope.messageErrorCalculator}</p>
 </form>
