@@ -19,3 +19,8 @@ To change this template use File | Settings | File Templates.
 </body>
 </html>
 
+
+<%--<c:if test="${sessionScope.username == null}">--%>
+<%--    <a href="/registration">Registration</a>--%>
+<%--    <a href="/authorization">Authorization</a>--%>
+<%--</c:if>--%>

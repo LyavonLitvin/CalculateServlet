@@ -30,11 +30,9 @@ public class RegistrationServlet extends HttpServlet {
         User user = new User(name, userName, password, session.getId());
         if (inMemoryUsersStorageService.saveUser(user)) {
             session.setAttribute("messageErrorRegistration","Registration was successful.");
-            System.out.println("Registration was successful.");
             req.getServletContext().getRequestDispatcher("/pages/authorization.jsp").forward(req, resp);
         } else {
             session.setAttribute("messageErrorRegistration","Error. User not created.");
-            System.out.println("Error. User not created.");
             req.getServletContext().getRequestDispatcher("/pages/index.jsp").forward(req, resp);
         }
     }

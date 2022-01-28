@@ -24,11 +24,9 @@ public class CalculatorFilter extends HttpFilter {
             HttpSession session = req.getSession();
             if (session.getAttribute("username") == null) {
                 req.setAttribute("messageErrorCalculator", "You have to authorize first!");
-                System.out.println("You have to authorize first!");
                 req.getServletContext().getRequestDispatcher("/pages/authorization.jsp").forward(req, resp);
             } else if (!inMemoryUsersStorageService.checkUser((String) session.getAttribute("username"))) {
                 req.setAttribute("messageErrorCalculator", "You have to authorize first!");
-                System.out.println("You have to authorize first!");
                 req.getServletContext().getRequestDispatcher("/pages/authorization.jsp").forward(req, resp);
             } else {
                 String firstNumberString = req.getParameter("num1");
@@ -36,15 +34,12 @@ public class CalculatorFilter extends HttpFilter {
                 String operationType = req.getParameter("opType");
                 if (firstNumberString == null || secondNumberString == null || operationType == null) {
                     req.setAttribute("messageErrorCalculator", "One of the fields is null!");
-                    System.out.println("One of the fields is null!");
                     req.getServletContext().getRequestDispatcher("/pages/calc.jsp").forward(req, resp);
                 } else if (firstNumberString.isEmpty() || secondNumberString.isEmpty() || operationType.isEmpty()) {
                     req.setAttribute("messageErrorCalculator", "field numbers or opType is empty!");
-                    System.out.println("One of the fields is empty!");
                     req.getServletContext().getRequestDispatcher("/pages/calc.jsp").forward(req, resp);
                 } else if (!validator.isNumeric(firstNumberString) && !validator.isNumeric(secondNumberString) && !validator.isRightOperator(operationType)) {
                     req.setAttribute("messageErrorCalculator", "Wrong enter numbers or opType");
-                    System.out.println("Wrong enter numbers or opType");
                     req.getServletContext().getRequestDispatcher("/pages/calc.jsp").forward(req, resp);
                 }
             }

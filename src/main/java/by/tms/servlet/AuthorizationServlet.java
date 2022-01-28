@@ -21,17 +21,17 @@ public class AuthorizationServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        InMemoryUsersStorageService inMemoryUsersStorageService = new InMemoryUsersStorageService();
+        // InMemoryUsersStorageService inMemoryUsersStorageService = new InMemoryUsersStorageService();
         String userName = req.getParameter("username");
         String password = req.getParameter("password");
         HttpSession session = req.getSession();
         session.setAttribute("username", userName);
         session.setAttribute("password", password);
-        System.out.println("Authorization was successful.");
-        System.out.println("Users");
-        for (User user: inMemoryUsersStorageService.getUsers()) {
-            System.out.println(user.toString());
-        }
+//        System.out.println("Authorization was successful.");
+//        System.out.println("Users");
+//        for (User user: inMemoryUsersStorageService.getUsers()) {
+//            System.out.println(user.toString());
+//        }
         req.getServletContext().getRequestDispatcher("/pages/calc.jsp").forward(req, resp);
     }
 

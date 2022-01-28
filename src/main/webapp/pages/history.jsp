@@ -16,12 +16,12 @@
     <h3>Results history for current user:</h3>
     <br>
     <br>
-    <c:forEach var="result" items="${results}">
-        <ul>
-            <li> result: <c:out value="${result}"/></li>
-        </ul>
-        <hr>
-    </c:forEach>
+    <ol>
+        <c:forEach var="result" items="${results}">
+            <li> calculation: <c:out value="${result}"/></li>
+        </c:forEach>
+    </ol>
+    <hr>
     <br>
     <br>
     <button formaction="/pages/calc.jsp">Calculation</button>
@@ -37,3 +37,5 @@
 </form>
 </body>
 </html>
+
+

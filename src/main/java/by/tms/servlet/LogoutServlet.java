@@ -27,6 +27,12 @@ public class LogoutServlet extends HttpServlet {
         session.invalidate();
         resp.getWriter().println("Logout successfully");
         System.out.println("Logout successfully");
-        //req.getServletContext().getRequestDispatcher("/pages/logout.jsp").forward(req, resp);
+//        Thread thread = new Thread();
+//        try {
+//            thread.wait(1000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+        req.getServletContext().getRequestDispatcher("/pages/index.jsp").forward(req, resp);
     }
 }

@@ -29,15 +29,6 @@ public class InMemoryUsersStorageService {
         return false;
     }
 
-//    public boolean checkUserSessionId(String userName, String sessionId) {
-//        User user = inMemoryUsersStorage.getByUserName(userName);
-//        if (user.getSessionID().equals(sessionId)) {
-//            return true;
-//        } else {
-//            return false;
-//        }
-//    }
-
     public ArrayList<User> getUsers() {
         return inMemoryUsersStorage.getUsers();
     }

@@ -14,20 +14,16 @@ import java.io.IOException;
 
 @WebFilter(servletNames = "HistoryServlet")
 public class HistoryFilter extends HttpFilter {
-    InMemoryUsersStorageService inMemoryUsersStorageService = new InMemoryUsersStorageService();
 
     @Override
     protected void doFilter(HttpServletRequest req, HttpServletResponse resp, FilterChain chain) throws IOException, ServletException {
-//        if (req.getMethod().equals("POST")) {
-            System.out.println("testDoFilter");
-            HttpSession session = req.getSession();
-            if (session.getAttribute("username") == null) {
-                req.setAttribute("messageErrorHistory", "You have to authorize first!");
-                System.out.println("You have to authorize first!");
-                req.getServletContext().getRequestDispatcher("/pages/authorization.jsp").forward(req, resp);
+        HttpSession session = req.getSession();
+        if (session.getAttribute("username") == null) {
+            req.setAttribute("messageErrorHistory", "You have to authorize first!");
+            System.out.println("You have to authorize first!");
+            req.getServletContext().getRequestDispatcher("/pages/authorization.jsp").forward(req, resp);
 
-            }
-//        }
+        }
         chain.doFilter(req, resp);
     }
 }
