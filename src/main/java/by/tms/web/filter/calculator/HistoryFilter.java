@@ -1,7 +1,6 @@
-package by.tms.filter;
+package by.tms.web.filter.calculator;
 
-import by.tms.service.CalculatorService;
-import by.tms.service.InMemoryUsersStorageService;
+import by.tms.web.filter.Constants;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -19,10 +18,8 @@ public class HistoryFilter extends HttpFilter {
     protected void doFilter(HttpServletRequest req, HttpServletResponse resp, FilterChain chain) throws IOException, ServletException {
         HttpSession session = req.getSession();
         if (session.getAttribute("username") == null) {
-            req.setAttribute("messageErrorHistory", "You have to authorize first!");
-            System.out.println("You have to authorize first!");
-            req.getServletContext().getRequestDispatcher("/pages/authorization.jsp").forward(req, resp);
-
+            req.setAttribute("messageErrorHistory", Constants.MSG_ERROR_NOT_AUTHORIZED);
+            req.getServletContext().getRequestDispatcher(Constants.AUTHORIZATION_LINK_JSP).forward(req, resp);
         }
         chain.doFilter(req, resp);
     }

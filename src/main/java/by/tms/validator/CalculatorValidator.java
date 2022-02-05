@@ -11,12 +11,10 @@ public class CalculatorValidator {
     }
 
     public boolean isRightOperator(String inputData) {
-        if (inputData.equals("div") || inputData.equals("multiple") || inputData.equals("diff") || inputData.equals("sum") ) {
+        if (inputData.equals("div") || inputData.equals("multiple") || inputData.equals("diff") || inputData.equals("sum")) {
             return true;
         } else {
             return false;
         }
     }
-
-
 }

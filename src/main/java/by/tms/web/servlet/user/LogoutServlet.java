@@ -1,7 +1,8 @@
-package by.tms.servlet;
+package by.tms.web.servlet.user;
 
 import by.tms.service.CalculatorService;
 import by.tms.service.InMemoryUsersStorageService;
+import by.tms.web.servlet.Constants;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/logout", name = "LogoutServlet")
+@WebServlet(urlPatterns = Constants.LOGOUT_SERVLET_LINK, name = "LogoutServlet")
 public class LogoutServlet extends HttpServlet {
 
     @Override
@@ -25,14 +26,8 @@ public class LogoutServlet extends HttpServlet {
         System.out.println("Users have deleted successfully");
         session.removeAttribute("username");
         session.invalidate();
-        resp.getWriter().println("Logout successfully");
-        System.out.println("Logout successfully");
-//        Thread thread = new Thread();
-//        try {
-//            thread.wait(1000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-        req.getServletContext().getRequestDispatcher("/pages/index.jsp").forward(req, resp);
+        // resp.getWriter().println("Logout successfully");
+        req.setAttribute("messageLogout", "Logout successfully");
+        req.getServletContext().getRequestDispatcher(Constants.INDEX_LINK_JSP).forward(req, resp);
     }
 }

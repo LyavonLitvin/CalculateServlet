@@ -11,20 +11,20 @@
     <title>Authorization</title>
 </head>
 <body>
-<h4>Authorization</h4>
+<h3>Authorization</h3>
 <form action="/authorization" method="post">
-    <label><input type="text" name="username" placeholder="Username"></label>Username
+    <h3><label><input type="text" name="username" placeholder="Username"></label> Username</h3>
     <br>
-    <label><input type="text" name="password" placeholder="Password"></label>Password
+    <h3><label><input type="text" name="password" placeholder="Password"></label> Password</h3>
+    <br>
+    <button><h3>Submit</h3></button>
     <br>
     <br>
-    <button>Submit</button>
-    <br>
-    <br>
-    <button formaction="/pages/index.jsp">On the main page</button>
-    <br>
-    <p>${requestScope.messageErrorAuthorization}</p>
+    <p>
+    <h3>${requestScope.messageErrorAuthorization}</h3>
+    </p>
 </form>
 <br>
+<a href="/"><h3>Back</h3></a>
 </body>
 </html>

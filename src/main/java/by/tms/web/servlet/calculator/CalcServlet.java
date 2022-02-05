@@ -1,4 +1,4 @@
-package by.tms.servlet;
+package by.tms.web.servlet.calculator;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,14 +10,15 @@ import java.io.IOException;
 
 import by.tms.service.*;
 import by.tms.entity.Result;
+import by.tms.web.servlet.Constants;
 
-@WebServlet(urlPatterns = "/calc", name = "CalcServlet")
+@WebServlet(urlPatterns = Constants.CALCULATION_SERVLET_LINK, name = "CalcServlet")
 public class CalcServlet extends HttpServlet {
 
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, NullPointerException, ServletException {
-        req.getServletContext().getRequestDispatcher("/pages/calc.jsp").forward(req, resp);
+        req.getServletContext().getRequestDispatcher(Constants.CALCULATOR_LINK_JSP).forward(req, resp);
     }
 
     @Override
@@ -31,12 +32,11 @@ public class CalcServlet extends HttpServlet {
         double secondNumber = Double.parseDouble(secondNumberString);
         Result result = new Result(firstNumber, secondNumber, operationType, (String) session.getAttribute("username"));
         calculatorService.calculation(result);
-        System.out.println("Calculation was successful");
         req.setAttribute("results",calculatorService.getResults((String) session.getAttribute("username")));
         req.setAttribute("messageCalculator", result.toString());
         for ( Result result1: calculatorService.getResultsToSOUT((String) session.getAttribute("username"))) {
             System.out.println(result1.toString());
         }
-        req.getServletContext().getRequestDispatcher("/pages/calc.jsp").forward(req, resp);
+        req.getServletContext().getRequestDispatcher(Constants.CALCULATOR_LINK_JSP).forward(req, resp);
     }
 }

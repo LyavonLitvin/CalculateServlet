@@ -12,28 +12,26 @@
     <title>Results history for current user</title>
 </head>
 <body>
-<form action="/history" method="post">  <%--  --%>
+<form action="/history" method="post">
     <h3>Results history for current user:</h3>
     <br>
     <br>
     <ol>
         <c:forEach var="result" items="${results}">
-            <li> calculation: <c:out value="${result}"/></li>
+            <li><h3> calculation: ${result.toString()}/></h3></li>
         </c:forEach>
     </ol>
     <hr>
     <br>
+    <h3><a href="/calc">Calculator</a></h3>
     <br>
-    <button formaction="/pages/calc.jsp">Calculation</button>
-    <br>
-    <br>
-    <button formaction="/pages/index.jsp">To the main page</button>
+    <h3><a href="/">On the main page</a></h3>
     <br>
     <br>
-    <a href="/logout"><h3>Logout</h3></a>
-    <br>
-    <br>
-    <p>${requestScope.messageErrorHistory}</p>
+</form>
+<h3><p>${requestScope.messageErrorHistory}</p></h3>
+<form action="/logout" method="post">
+    <button>Logout</button>
 </form>
 </body>
 </html>

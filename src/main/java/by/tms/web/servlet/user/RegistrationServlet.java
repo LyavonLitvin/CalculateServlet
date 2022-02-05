@@ -1,4 +1,4 @@
-package by.tms.servlet;
+package by.tms.web.servlet.user;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,13 +10,14 @@ import java.io.IOException;
 
 import by.tms.entity.User;
 import by.tms.service.InMemoryUsersStorageService;
+import by.tms.web.servlet.Constants;
 
 //registration?name=leo&username=leo&password=leo
-@WebServlet(urlPatterns = "/registration", name = "RegistrationServlet")
+@WebServlet(urlPatterns = Constants.REGISTRATION_SERVLET_LINK, name = "RegistrationServlet")
 public class RegistrationServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, NullPointerException, ServletException {
-        req.getServletContext().getRequestDispatcher("/pages/reg.jsp").forward(req, resp);
+        req.getServletContext().getRequestDispatcher(Constants.REGISTRATION_LINK_JSP).forward(req, resp);
     }
 
     @Override
@@ -30,10 +31,10 @@ public class RegistrationServlet extends HttpServlet {
         User user = new User(name, userName, password, session.getId());
         if (inMemoryUsersStorageService.saveUser(user)) {
             session.setAttribute("messageErrorRegistration","Registration was successful.");
-            req.getServletContext().getRequestDispatcher("/pages/authorization.jsp").forward(req, resp);
+            req.getServletContext().getRequestDispatcher(Constants.AUTHORIZATION_LINK_JSP).forward(req, resp);
         } else {
             session.setAttribute("messageErrorRegistration","Error. User not created.");
-            req.getServletContext().getRequestDispatcher("/pages/index.jsp").forward(req, resp);
+            req.getServletContext().getRequestDispatcher(Constants.INDEX_LINK_JSP).forward(req, resp);
         }
     }
 }
